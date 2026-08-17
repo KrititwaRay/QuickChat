@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const LoginPage = () => {
   const [currState, setCurrState] = useState("Sign up");
@@ -9,6 +10,8 @@ const LoginPage = () => {
   const [bio, setBio] = useState("");
 
   const [isDataSubmitted, setIsDataSubmitted] = useState(false);
+
+  const { login } = useContext(AuthContext)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,17 +24,30 @@ const LoginPage = () => {
 
     // Login or Final Sign Up
     if (currState === "Login") {
-      console.log({
+
+      login('login', {
         email,
         password,
-      });
+
+      })
+      // console.log({
+      //   email,
+      //   password,
+      // });
     } else {
-      console.log({
+      login('signup', {
         fullName,
         email,
         password,
-        bio,
-      });
+        bio
+
+      })
+      // console.log({
+      //   fullName,
+      //   email,
+      //   password,
+      //   bio,
+      // });
     }
   };
 

@@ -51,7 +51,7 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
 
-    try {
+    try {    
         const { email, password } = req.body;
         const userData = await User.findOne({ email });
 
@@ -87,6 +87,7 @@ export const login = async (req, res) => {
 
 // controller to check if usrt is authenticcated.
 export const checkAuth = (req, res) => {
+    console.log("vdvdvdv+++++++++++")
     //protectRoute
     return res.json({
         success: true,
